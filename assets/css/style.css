@@ -1,0 +1,248 @@
+/* --------------------------------------------------------------------------------------------
+                                        GENERAL
+-------------------------------------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+    /* Colors */
+    --c-primary: #FBA200;
+    --c-secondary: #3F2700;
+    --c-error: #dd3f0e;
+    --c-grey: #525150;
+    --c-dark: #1C1201;
+    --c-light: #FFFFFF;
+
+    /* Font family */
+    /* --ff-name */
+
+    /* Font size */
+    --fs-ratio: 1.2;
+    --fs-s: calc(var(--fs-m) / var(--fs-ratio));
+    --fs-m: 1em;
+    --fs-l: calc(var(--fs-m)* var(--fs-ratio));
+    --fs-xl: calc(var(--fs-l)* var(--fs-ratio));
+    --fs-xxl: calc(var(--fs-xl)* var(--fs-ratio));
+
+    /* Font weight */
+    --fw-regular: 400;
+    --fw-semi_bold: 600;
+
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--fs-m);
+    font-family: 'Monserrat', sans-serif;
+    line-height: 1.45;
+    font-weight: var(--fw-regular);
+    background-color: var(--c-light);
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+:is(a, a:hover, button) {
+    text-decoration: none;
+    color: var(--c-dark);
+}
+
+li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote {
+    max-width: 80ch;
+}
+
+/* --------------------------------------------------------------------------------------------
+                                      COMPONENT
+-------------------------------------------------------------------------------------------- */
+
+/* ------------------------
+       Index
+------------------------ */
+.index{
+    min-height: 100vh;
+    background-image: url("../img/unsplash_photo_shoes.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.navbar_dashboard{
+    position: absolute;
+    background: #fff;
+    padding: 0.5em;
+    border-bottom-right-radius: 20px;
+}
+
+.element1{
+    width: 45vw;
+    background-color: #fff;
+    font-size: 4em;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    text-align: center;
+    margin: auto;
+    padding: 0.3em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.element3{
+    width: 45vw;
+    background-color: #fff;
+    font-size: 4em;
+    border-radius: 100px;
+    padding: 0.3em 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.element2{
+    width: 45vw;
+    background-color: #fff;
+    font-size: 3em;
+    border-top-right-radius: 30px;
+    padding: 0.3em 0;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width : 500px) {
+    .element2{
+        width: 100vw;
+        border-top-right-radius: 0;
+    }
+
+}
+/* ------------------------
+       Dashboard
+------------------------ */
+.dashboard{
+    display: flex;
+    min-height: 100vh;
+}
+
+.menu{
+    width: 20vw;
+    background-color: #B2BBCC;
+}
+
+.menu > img {
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    margin: 5em auto;
+}
+
+.menu h2{
+    padding: 0.2em 1em;
+}
+
+.gestion{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: #eeeeee;
+}
+
+.title_gestion{
+    padding: 0.5em 2em;
+    background-color: #FFFFFF;
+}
+
+.items_gestion{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-row-gap: 5em;
+    margin: 5em 0;
+}
+
+.item{
+    width: 30vw;
+    margin: auto;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.item>*{
+    margin: 0.5em 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form>*{
+    margin: 0.5em 0;
+}
+
+input[type="text"]{
+    height: 3em;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+}
+
+input[type="checkbox"]{
+    position: relative;
+    width: 80px;
+    height: 40px;
+    -webkit-appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    transition: 0.5s;
+}
+
+input:checked[type="checkbox"]{
+    background: #03a9f4;
+}
+
+input[type="checkbox"]:before{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    top:5px;
+    left:5px;
+    background: #FFFFFF;
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    transition: .5s;
+}
+
+input:checked[type="checkbox"]:before{
+    left:45px;
+}
+
