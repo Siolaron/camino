@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote {
     border-bottom-right-radius: 20px;
 }
 
-.element1{
+.item1{
     width: 45vw;
     background-color: #fff;
     font-size: 4em;
@@ -102,8 +102,11 @@ h1, h2, h3, h4, h5, h6, p, blockquote {
     align-items: center;
 }
 
+.item1>p{
+    max-width: 45vw;
+}
 
-.element3{
+.item3{
     width: 45vw;
     background-color: #fff;
     font-size: 4em;
@@ -118,7 +121,11 @@ h1, h2, h3, h4, h5, h6, p, blockquote {
     align-items: center;
 }
 
-.element2{
+.item3>p{
+    max-width: 45vw;
+}
+
+.item2{
     width: 45vw;
     background-color: #fff;
     font-size: 3em;
@@ -131,13 +138,10 @@ h1, h2, h3, h4, h5, h6, p, blockquote {
     align-items: center;
 }
 
-@media only screen and (max-width : 500px) {
-    .element2{
-        width: 100vw;
-        border-top-right-radius: 0;
-    }
-
+.item2>p{
+    max-width: 45vw;
 }
+
 /* ------------------------
        Dashboard
 ------------------------ */
@@ -153,33 +157,37 @@ h1, h2, h3, h4, h5, h6, p, blockquote {
 
 .menu > img {
     border-radius: 20px;
-    width: 200px;
-    height: 200px;
-    margin: 5em auto;
+    width: 10em;
+    height: 10em;
+    margin: 2em auto;
 }
 
 .menu h2{
     padding: 0.2em 1em;
 }
 
-.gestion{
+.management{
     display: flex;
     flex-direction: column;
     width: 100vw;
     background-color: #eeeeee;
 }
 
-.title_gestion{
+.title_management{
     padding: 0.5em 2em;
     background-color: #FFFFFF;
 }
 
-.items_gestion{
+.items_management{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-row-gap: 5em;
     margin: 5em 0;
+}
+
+.sub_title{
+    color: #b4b4b4;
 }
 
 .item{
@@ -189,7 +197,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote {
     background-color: white;
     display: flex;
     flex-direction: column;
-    padding: 2em;
+    padding: 1.5em;
 }
 
 .item>*{
@@ -205,17 +213,28 @@ form>*{
     margin: 0.5em 0;
 }
 
-input[type="text"]{
-    height: 3em;
+.form_element:last-child{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text_element{
     border: none;
     border-bottom: 1px solid lightgray;
     width: 100%;
+    font-size: 1.2em;
 }
 
-input[type="checkbox"]{
+.text_element:focus{
+    outline: none;
+}
+
+.cta_toggle{
     position: relative;
-    width: 80px;
-    height: 40px;
+    width: 60px;
+    height: 30px;
     -webkit-appearance: none;
     background: #c6c6c6;
     outline: none;
@@ -224,15 +243,15 @@ input[type="checkbox"]{
     transition: 0.5s;
 }
 
-input:checked[type="checkbox"]{
+.cta_toggle:checked{
     background: #03a9f4;
 }
 
-input[type="checkbox"]:before{
+.cta_toggle:before{
     content: '';
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 20px;
     top:5px;
     left:5px;
@@ -242,7 +261,72 @@ input[type="checkbox"]:before{
     transition: .5s;
 }
 
-input:checked[type="checkbox"]:before{
-    left:45px;
+.cta_toggle:checked:before{
+    left:35px;
 }
 
+
+/* --------------------------------------------------------------------------------------------
+                                      MEDIA QUERIES
+-------------------------------------------------------------------------------------------- */
+@media only screen and (max-width : 500px) {
+    /* ------------------------
+           Index
+    ------------------------ */
+    .item1{
+        font-size: 1.8em;
+    }
+
+    .item1>p{
+        max-width: 45vw;
+    }
+
+    .item2{
+        width: 100vw;
+        border-top-right-radius: 0;
+        font-size: 1.5em;
+    }
+
+    .item3{
+        width: 60vw;
+        font-size: 1.8em;
+    }
+
+    .item3>p{
+        max-width: 60vw;
+    }
+
+    /* ------------------------
+           Dashboard
+    ------------------------ */
+    .dashboard{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu{
+        width:100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title_gestion{
+        padding: 1em 0;
+        text-align: center;
+    }
+
+    .items_gestion{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-row-gap: 5em;
+        margin: 5em 0;
+    }
+
+    .item{
+        width:90vw;
+    }
+
+}

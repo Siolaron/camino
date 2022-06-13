@@ -5,11 +5,11 @@ require_once('./inc/head.php') ?>
     <div class="navbar_dashboard">
         <a href="dashboard.php">Dashboard</a>
     </div>
-    <div class="element1">
+    <div class="item1">
     </div>
-    <div class="element3">
+    <div class="item3">
     </div>
-    <div class="element2">
+    <div class="item2">
     </div>
 </main>
 

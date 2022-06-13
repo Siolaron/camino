@@ -3,8 +3,16 @@
                                       FUNCTIONS
 -------------------------------------------------------------------------------------------- */
 
-console.log(localStorage.element_view1,localStorage.element_view2,localStorage.element_view3)
-console.log(localStorage.element_view1_checked,localStorage.element_view2_checked,localStorage.element_view3_checked)
+/*
+    Select different elements
+ */
+let element1 = document.querySelector('.item1')
+let element2 = document.querySelector('.item2')
+let element3 = document.querySelector('.item3')
+
+let p1 = document.createElement('p')
+let p2 = document.createElement('p')
+let p3 = document.createElement('p')
 
 let toggles = document.querySelectorAll('#element_view')
 
@@ -12,79 +20,107 @@ toggles.forEach(toggle =>{
     toggle.addEventListener('change',viewElement)
 })
 
+/*
+    Function to display element on index
+ */
 function viewElement(e){
     if(e.target.checked){
         localStorage.setItem(e.target.name+'_checked','checked')
-        localStorage.setItem(e.target.name,e.target.parentElement.parentElement[0].value)
+        localStorage.setItem(e.target.parentElement.parentElement[0].name,e.target.parentElement.parentElement[0].value)
     }else{
-        if(e.target.name === 'element_view1'){
-            console.log('test2')
+        if(e.target.name === 'item1_check'){
             localStorage.removeItem(e.target.name+'_checked')
         }
-        if(e.target.name === 'element_view2'){
-            console.log('test')
+        if(e.target.name === 'item2_check'){
             localStorage.removeItem(e.target.name+'_checked')
         }
-        if(e.target.name === 'element_view3'){
+        if(e.target.name === 'item3_check'){
             localStorage.removeItem(e.target.name+'_checked')
         }
     }
 }
 
-let element1 = document.querySelector('.element1')
-let element2 = document.querySelector('.element2')
-let element3 = document.querySelector('.element3')
+/*
+* Create element on index
+*/
+function createElementIndex(){
+    p1.textContent = localStorage.item1_name
+    element1.appendChild(p1)
 
-let p1 = document.createElement('p')
-let p2 = document.createElement('p')
-let p3 = document.createElement('p')
+    p2.textContent = localStorage.item2_name
+    element2.appendChild(p2)
+
+    p3.textContent = localStorage.item3_name
+    element3.appendChild(p3)
+}
+
+/*
+* Display element on Index
+*/
+function displayItemIndex(){
+
+    if(document.querySelector('.item1')){
+        if(localStorage.item1_check_checked === "checked"){
+            document.querySelector('.item1').style.display = ""
+        }else{
+            document.querySelector('.item1').style.display = "none"
+        }
+    }
+
+    if(document.querySelector('.item2')){
+        if(localStorage.item2_check_checked === "checked"){
+            document.querySelector('.item2').style.display = ""
+        }else{
+            document.querySelector('.item2').style.display = "none"
+        }
+    }
+
+    if(document.querySelector('.item3')){
+        if(localStorage.item3_check_checked === "checked"){
+            document.querySelector('.item3').style.display = ""
+        }else{
+            document.querySelector('.item3').style.display = "none"
+        }
+    }
+}
 
 /*
     Create element on load
  */
 window.addEventListener("load",function (){
 
-    if(localStorage.element_view1_checked === "checked"){
-        if(document.querySelector('[name="element_view1"]'))
-            document.querySelector('[name="element_view1"]').checked = true;
-    }else{
-        if(document.querySelector('.element1'))
-            document.querySelector('.element1').style.display = "none"
+    /*
+        This line is for dashboard value form
+     */
+    if(localStorage.item1_check_checked === "checked"){
+        if(document.querySelector('[name="item1_check"]'))
+            document.querySelector('[name="item1_check"]').checked = true;
     }
 
-    if(localStorage.element_view2_checked === "checked"){
-        if(document.querySelector('[name="element_view2"]'))
-            document.querySelector('[name="element_view2"]').checked = true;
-    }else{
-        if(document.querySelector('.element2'))
-            document.querySelector('.element2').style.display = "none"
+    if(localStorage.item2_check_checked === "checked"){
+        if(document.querySelector('[name="item2_check"]'))
+            document.querySelector('[name="item2_check"]').checked = true;
     }
 
-    if(localStorage.element_view3_checked === "checked"){
-        if(document.querySelector('[name="element_view3"]'))
-            document.querySelector('[name="element_view3"]').checked = true;
-    }else{
-        if(document.querySelector('.element3'))
-            document.querySelector('.element3').style.display = "none"
+    if(localStorage.item3_check_checked === "checked"){
+        if(document.querySelector('[name="item3_check"]'))
+            document.querySelector('[name="item3_check"]').checked = true;
     }
 
-    if(document.querySelector('[name="element_name1"]'))
-        document.querySelector('[name="element_name1"]').value = localStorage.element_view1
+    if(document.querySelector('[name="item1_name"]'))
+        document.querySelector('[name="item1_name"]').value = localStorage.item1_name
 
-    if(document.querySelector('[name="element_name2"]'))
-        document.querySelector('[name="element_name2"]').value = localStorage.element_view2
+    if(document.querySelector('[name="item2_name"]'))
+        document.querySelector('[name="item2_name"]').value = localStorage.item2_name
 
-    if(document.querySelector('[name="element_name3"]'))
-        document.querySelector('[name="element_name3"]').value = localStorage.element_view3
+    if(document.querySelector('[name="item3_name"]'))
+        document.querySelector('[name="item3_name"]').value = localStorage.item3_name
 
-    p1.textContent = localStorage.element_view1
-    element1.appendChild(p1)
-
-    p2.textContent = localStorage.element_view2
-    element2.appendChild(p2)
-
-    p3.textContent = localStorage.element_view3
-    element3.appendChild(p3)
+    /*
+        This line is for Index
+     */
+    createElementIndex()
+    displayItemIndex()
 
 })
 
@@ -92,41 +128,14 @@ window.addEventListener("load",function (){
     Refresh element when it change in storage
  */
 window.addEventListener("storage",function (){
+    /*
+        This line is for refresh automatically index
+    */
     element1.textContent=""
     element2.textContent=""
     element3.textContent=""
 
-    if(localStorage.element_view1_checked === "checked"){
-        if(document.querySelector('.element1'))
-            document.querySelector('.element1').style.display = ""
-    }else{
-        if(document.querySelector('.element1'))
-            document.querySelector('.element1').style.display = "none"
-    }
-
-    if(localStorage.element_view2_checked === "checked"){
-        if(document.querySelector('.element2'))
-            document.querySelector('.element2').style.display = ""
-    }else{
-        if(document.querySelector('.element2'))
-            document.querySelector('.element2').style.display = "none"
-    }
-
-    if(localStorage.element_view3_checked === "checked"){
-        if(document.querySelector('.element3'))
-            document.querySelector('.element3').style.display = ""
-    }else{
-        if(document.querySelector('.element3'))
-            document.querySelector('.element3').style.display = "none"
-    }
-
-    p1.textContent = localStorage.element_view1
-    element1.appendChild(p1)
-
-    p2.textContent = localStorage.element_view2
-    element2.appendChild(p2)
-
-    p3.textContent = localStorage.element_view3
-    element3.appendChild(p3)
+    displayItemIndex()
+    createElementIndex()
 
 })
